@@ -1,0 +1,5 @@
+c:\documents and settings\anto.mervyn\my documents\visual studio 2010\Projects\eNovel\eNovelWcf\bin\eNovelWcf.dll
+c:\documents and settings\anto.mervyn\my documents\visual studio 2010\Projects\eNovel\eNovelWcf\bin\eNovelWcf.pdb
+c:\documents and settings\anto.mervyn\my documents\visual studio 2010\Projects\eNovel\eNovelWcf\obj\Debug\ResolveAssemblyReference.cache
+c:\documents and settings\anto.mervyn\my documents\visual studio 2010\Projects\eNovel\eNovelWcf\obj\Debug\eNovelWcf.dll
+c:\documents and settings\anto.mervyn\my documents\visual studio 2010\Projects\eNovel\eNovelWcf\obj\Debug\eNovelWcf.pdb
