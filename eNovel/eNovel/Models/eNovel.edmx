@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="eNovelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="eNovelModelStoreContainer">
+          <EntitySet Name="Authors" EntityType="eNovelModel.Store.Authors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comments" EntityType="eNovelModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contributions" EntityType="eNovelModel.Store.Contributions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FriendRequests" EntityType="eNovelModel.Store.FriendRequests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Friends" EntityType="eNovelModel.Store.Friends" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stories" EntityType="eNovelModel.Store.Stories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tags" EntityType="eNovelModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="JoinDate" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="StoryId" Type="int" />
+          <Property Name="ContributionId" Type="int" />
+          <Property Name="CommentText" Type="nvarchar" MaxLength="200" />
+          <Property Name="AddedOn" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Contributions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StoryId" Type="int" />
+          <Property Name="ContribId" Type="int" />
+          <Property Name="StoryText" Type="nvarchar(max)" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="FriendRequests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="int" />
+          <Property Name="RecipientId" Type="int" />
+          <Property Name="SentDate" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Friends">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="FriendId" Type="int" />
+          <Property Name="AcceptedDate" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="InviteReceiveDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Stories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StoryTitle" Type="varchar" MaxLength="50" />
+          <Property Name="StoryDescription" Type="varchar" MaxLength="1000" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="GenreId" Type="int" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="UpdatedOn" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="Complete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="nvarchar" MaxLength="20" />
+          <Property Name="StoryId" Type="int" />
+          <Property Name="AddedById" Type="int" />
+          <Property Name="AddedOn" Type="smalldatetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eNovelModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="eNovelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="eNovelModel.Author" />
+          <EntitySet Name="Comments" EntityType="eNovelModel.Comment" />
+          <EntitySet Name="Contributions" EntityType="eNovelModel.Contribution" />
+          <EntitySet Name="FriendRequests" EntityType="eNovelModel.FriendRequest" />
+          <EntitySet Name="Friends" EntityType="eNovelModel.Friend" />
+          <EntitySet Name="Stories" EntityType="eNovelModel.Story" />
+          <EntitySet Name="Tags" EntityType="eNovelModel.Tag" />
+        </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="JoinDate" Type="DateTime" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="StoryId" Type="Int32" />
+          <Property Name="ContributionId" Type="Int32" />
+          <Property Name="CommentText" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="AddedOn" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Contribution">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoryId" Type="Int32" />
+          <Property Name="ContribId" Type="Int32" />
+          <Property Name="StoryText" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FriendRequest">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SenderId" Type="Int32" />
+          <Property Name="RecipientId" Type="Int32" />
+          <Property Name="SentDate" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Friend">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="FriendId" Type="Int32" />
+          <Property Name="AcceptedDate" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="InviteReceiveDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoryTitle" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StoryDescription" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="GenreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" />
+          <Property Name="UpdatedOn" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="Complete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="StoryId" Type="Int32" />
+          <Property Name="AddedById" Type="Int32" />
+          <Property Name="AddedOn" Type="DateTime" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eNovelModelStoreContainer" CdmEntityContainer="eNovelEntities">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="eNovelModel.Author">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="eNovelModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+                <ScalarProperty Name="ContributionId" ColumnName="ContributionId" />
+                <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contributions">
+            <EntityTypeMapping TypeName="eNovelModel.Contribution">
+              <MappingFragment StoreEntitySet="Contributions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+                <ScalarProperty Name="ContribId" ColumnName="ContribId" />
+                <ScalarProperty Name="StoryText" ColumnName="StoryText" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FriendRequests">
+            <EntityTypeMapping TypeName="eNovelModel.FriendRequest">
+              <MappingFragment StoreEntitySet="FriendRequests">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="SenderId" ColumnName="SenderId" />
+                <ScalarProperty Name="RecipientId" ColumnName="RecipientId" />
+                <ScalarProperty Name="SentDate" ColumnName="SentDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Friends">
+            <EntityTypeMapping TypeName="eNovelModel.Friend">
+              <MappingFragment StoreEntitySet="Friends">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="FriendId" ColumnName="FriendId" />
+                <ScalarProperty Name="AcceptedDate" ColumnName="AcceptedDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="InviteReceiveDate" ColumnName="InviteReceiveDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stories">
+            <EntityTypeMapping TypeName="eNovelModel.Story">
+              <MappingFragment StoreEntitySet="Stories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StoryTitle" ColumnName="StoryTitle" />
+                <ScalarProperty Name="StoryDescription" ColumnName="StoryDescription" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Complete" ColumnName="Complete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="eNovelModel.Tag">
+              <MappingFragment StoreEntitySet="Tags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TagName" ColumnName="TagName" />
+                <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+                <ScalarProperty Name="AddedById" ColumnName="AddedById" />
+                <ScalarProperty Name="AddedOn" ColumnName="AddedOn" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="eNovel">
+        <EntityTypeShape EntityType="eNovelModel.Author" Width="1.5" PointX="0.75" PointY="0.75" Height="2.172587890625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eNovelModel.Comment" Width="1.5" PointX="2.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="eNovelModel.Contribution" Width="1.5" PointX="4.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="eNovelModel.FriendRequest" Width="1.5" PointX="0.75" PointY="4.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="eNovelModel.Friend" Width="1.5" PointX="2.75" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="eNovelModel.Story" Width="1.5" PointX="4.75" PointY="3.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="eNovelModel.Tag" Width="1.5" PointX="6.75" PointY="3.75" Height="2.1725878906249996" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -14,6 +14,38 @@ body {
     padding: 0;
 }
 
+#searchbar
+{
+font-size:33px; 
+height:33px; 
+font-family:Arial; 
+left:0; 
+line-height:33px;
+padding:8px 8px 7px; 
+top:0;
+width:400px;
+}
+
+.showprogress
+{
+font-size:33px; 
+height:33px; 
+font-family:Arial; 
+left:0; 
+line-height:33px;
+padding:8px 8px 7px; 
+top:0;
+width:400px;
+background:#ffffff url('/Images/ajax-loader.gif') no-repeat center right;
+}
+
+#searchbutton
+{
+margin-left:50px; 
+width:100px; 
+height:45px;
+}
+
 a {
     color: #333;
     outline: none;
