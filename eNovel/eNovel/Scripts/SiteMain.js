@@ -1,9 +1,9 @@
 ﻿$(function () {
-    $('#searchbar').change(
+    $('#searchbar').mouseover(
             function () {
                 $(this).addClass("showprogress");
             });
-    $('#searchbar').blur(
+    $('#searchbar').mouseout(
             function () {
                 $(this).removeClass("showprogress");
             });
