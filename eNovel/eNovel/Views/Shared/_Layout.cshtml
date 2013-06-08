@@ -5,10 +5,11 @@
         <title>eNovel - Collaborative Stories</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-         @Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui")
-<script src="@Url.Content("~/Scripts/SiteMain.js")" type="text/javascript"></script>
-          <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/theme/base/jquery.ui.all.css")" rel="stylesheet" type="text/css" />
+         @Scripts.Render("~/bundles/jquery")
+         @Scripts.Render("~/bundles/jqueryui")
+         @Styles.Render("~/Content/themes/base/css")
+         <script src="@Url.Content("~/Scripts/SiteMain.js")" type="text/javascript"></script>         
+         <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
 
     </head>
     <body>
@@ -16,6 +17,7 @@
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">
+                    <img src="../../Images/book.jpg" width="100px" height="100" alt="eNovel" />
                     <img src="../../Images/beta_logo.png" alt="eNovel" />
                     </p>
                 </div>

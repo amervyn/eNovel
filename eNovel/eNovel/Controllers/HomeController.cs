@@ -10,9 +10,14 @@ namespace eNovel.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
             return View();
+        }
+
+        public JsonResult GetData(string term)
+        {
+            string[] test= {"data", "data2", "item1", "item2"};
+            List<string> data = (from c in test where c.ToLower().Contains(term.ToLower()) select c).ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()
