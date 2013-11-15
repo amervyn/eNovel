@@ -14,6 +14,10 @@ body {
     padding: 0;
 }
 
+.ui-autocomplete-loading {
+background: white url('../Images/ajax-loader.gif') right center no-repeat;
+}
+
 #searchbar
 {
 font-size:33px; 
